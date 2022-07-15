@@ -2,8 +2,20 @@
 name = "opus-rs"
 version = "0.1.0"
 edition = "2021"
+autobins = false
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
 bitvec = "1.0.0"
+ffmpeg-next = {version = "5.0.3", optional = true}
+
+
+[features]
+strict = []
+tools = ["ffmpeg-next"]
+default = ["strict", "tools"]
+
+[[bin]]
+name = "opusstat"
+required-features = ["tools"]
